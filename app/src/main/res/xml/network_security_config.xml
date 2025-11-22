@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <!-- Your backend domain -->
+        <domain includeSubdomains="true">supardating.com</domain>
+
+        <!-- Certificate pinning -->
+        <pin-set expiration="2027-12-31">
+            <!-- Primary pin (SHA-256 of public key) -->
+            <pin digest="SHA-256">zILjrdFTDD8eAW37ktqlQWYd37Ppy8/bVLEPfNXtv7Q=</pin>
+
+            <!-- Backup pin (from another cert/key you control) -->
+            <!--<pin digest="SHA-256">YOUR_BACKUP_PIN_BASE64==</pin>-->
+        </pin-set>
+    </domain-config>
+</network-security-config>
