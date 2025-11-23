@@ -17,6 +17,7 @@ import com.example.ssl_tls.BuildConfig
 import com.example.ssl_tls.data.data_source.romote.service.RetrofitBuilder
 import com.example.ssl_tls.presentation.theme.SSLTLSTheme
 import kotlinx.coroutines.launch
+
 /**
  * two type to make SSL PLANNING CERTIFICATE
  * 1- xml
@@ -30,11 +31,15 @@ class MainActivity : ComponentActivity() {
             Log.d("MainActivity", "onCreate: ${BuildConfig.BASE_URL}")
 
             SSLTLSTheme {
-                val api = RetrofitBuilder.getSSLApiService()
+                val service = RetrofitBuilder(
+                    context = applicationContext
+                ).getSSLApiService()
+
+
                 lifecycleScope.launch {
                     try {
-                        Log.d("MainActivity", "onCreate: ${api.getSupardatingApi()}")
-                    }catch (exception: Exception){
+                        Log.d("MainActivity", "onCreate: ${service.getSupardatingApi()}")
+                    } catch (exception: Exception) {
                         Log.d("MainActivity", "onCreate: ${exception.message}")
                         Log.d("MainActivity", "onCreate: ${exception.cause}")
                     }
